@@ -30,7 +30,7 @@
     90deg,
     transparent 0%,
     transparent 5%,
-    rgba(#fff, 0.4) 50%,
+    rgb(255 255 255 / 40%) 50%,
     transparent 95%,
     transparent 100%
   );

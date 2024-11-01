@@ -23,9 +23,10 @@ const SLIDES = [
     rootNode?.querySelector<HTMLElement>('[data-embla-prev]');
   const nextButtonNode =
     rootNode?.querySelector<HTMLElement>('[data-embla-next]');
+  const dotsNode = rootNode?.querySelector<HTMLElement>('[data-embla-dots]');
 
-  if (emblaNode && prevButtonNode && nextButtonNode) {
-    initCarousel({ emblaNode: emblaNode, prevButtonNode, nextButtonNode });
+  if (emblaNode && prevButtonNode && nextButtonNode && dotsNode) {
+    initCarousel(emblaNode, prevButtonNode, nextButtonNode, dotsNode);
   }
 </script>
 
@@ -44,8 +45,13 @@ const SLIDES = [
       }
     </div>
   </div>
-  <button type="button" data-embla-prev class="prev">Prev</button>
-  <button type="button" data-embla-next class="next">Next</button>
+  <div class="buttons">
+    <button type="button" data-embla-prev class="button">Prev</button>
+    <button type="button" data-embla-next class="button">Next</button>
+  </div>
+  <div data-embla-dots class="dots">
+    {[...Array(6)].map(() => <div class="dot skeleton" />)}
+  </div>
 </div>
 
 <style>
@@ -70,5 +76,41 @@ const SLIDES = [
   .slide-image-wrapper {
     width: 100%;
     aspect-ratio: 400 / 300;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem;
+  }
+
+  .button {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: black;
+    border-radius: 0.5rem;
+  }
+
+  .dots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 1rem;
+  }
+
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  .embla :global(.dot) {
+    width: 1.6rem;
+    height: 1.6rem;
+    touch-action: manipulation;
+    border: 2px solid lightgray;
+    border-radius: 50%;
+  }
+
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  .embla :global(.dot.selected) {
+    border: 2px solid black;
   }
 </style>
