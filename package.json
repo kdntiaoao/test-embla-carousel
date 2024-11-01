@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "astro": "^4.16.8"
+    "astro": "^4.16.8",
+    "ress": "^5.0.2"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.2",
