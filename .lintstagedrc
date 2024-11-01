@@ -1,0 +1,15 @@
+{
+  "*.css": [
+    "stylelint \"src/**/*.{css,scss,astro}\" --fix",
+    "prettier --write",
+    "astro check"
+  ],
+  "*.{js,ts}": ["eslint . --fix", "prettier . --write", "astro check"],
+  "*.astro": [
+    "stylelint \"src/**/*.{css,scss,astro}\" --fix",
+    "eslint --fix",
+    "prettier --write",
+    "astro check"
+  ],
+  "*.{md,json}": ["prettier --write"]
+}
