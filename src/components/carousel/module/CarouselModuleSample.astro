@@ -1,0 +1,74 @@
+---
+const SLIDES = [
+  { image: 'https://picsum.photos/id/237/400/300', text: 'Slide 1' },
+  { image: 'https://picsum.photos/id/238/400/300', text: 'Slide 2' },
+  { image: 'https://picsum.photos/id/239/400/300', text: 'Slide 3' },
+  { image: 'https://picsum.photos/id/237/400/300', text: 'Slide 4' },
+  { image: 'https://picsum.photos/id/238/400/300', text: 'Slide 5' },
+  { image: 'https://picsum.photos/id/239/400/300', text: 'Slide 6' },
+  { image: 'https://picsum.photos/id/237/400/300', text: 'Slide 7' },
+  { image: 'https://picsum.photos/id/238/400/300', text: 'Slide 8' },
+  { image: 'https://picsum.photos/id/239/400/300', text: 'Slide 9' },
+];
+---
+
+<script>
+  import { initCarousel } from '@/utils/init-carousel';
+
+  const rootNode = document.querySelector<HTMLElement>('[data-embla]');
+  const emblaNode = rootNode?.querySelector<HTMLElement>(
+    '[data-embla-viewport]',
+  );
+  const prevButtonNode =
+    rootNode?.querySelector<HTMLElement>('[data-embla-prev]');
+  const nextButtonNode =
+    rootNode?.querySelector<HTMLElement>('[data-embla-next]');
+
+  if (emblaNode && prevButtonNode && nextButtonNode) {
+    initCarousel({ emblaNode: emblaNode, prevButtonNode, nextButtonNode });
+  }
+</script>
+
+<div data-embla class="embla">
+  <div data-embla-viewport>
+    <div class="container">
+      {
+        SLIDES.map((slide) => (
+          <div class="slide">
+            <div class="slide-image-wrapper">
+              <img src={slide.image} alt="" width="400" height="300" />
+            </div>
+            <p>{slide.text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  <button type="button" data-embla-prev class="prev">Prev</button>
+  <button type="button" data-embla-next class="next">Next</button>
+</div>
+
+<style>
+  .embla {
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid red;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  .slide {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 400px;
+    margin-right: 20px;
+    border: 1px solid black;
+  }
+
+  .slide-image-wrapper {
+    width: 100%;
+    aspect-ratio: 400 / 300;
+  }
+</style>
