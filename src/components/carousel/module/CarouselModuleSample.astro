@@ -1,14 +1,14 @@
 ---
 const SLIDES = [
-  { image: 'https://picsum.photos/id/237/400/300', text: 'Slide 1' },
+  { image: 'https://picsum.photos/id/237/400/300', text: 'Slide 1', href: '/' },
   { image: 'https://picsum.photos/id/238/400/300', text: 'Slide 2' },
-  { image: 'https://picsum.photos/id/239/400/300', text: 'Slide 3' },
+  { image: 'https://picsum.photos/id/239/400/300', text: 'Slide 3', href: '/' },
   { image: 'https://picsum.photos/id/237/400/300', text: 'Slide 4' },
-  { image: 'https://picsum.photos/id/238/400/300', text: 'Slide 5' },
+  { image: 'https://picsum.photos/id/238/400/300', text: 'Slide 5', href: '/' },
   { image: 'https://picsum.photos/id/239/400/300', text: 'Slide 6' },
-  { image: 'https://picsum.photos/id/237/400/300', text: 'Slide 7' },
+  { image: 'https://picsum.photos/id/237/400/300', text: 'Slide 7', href: '/' },
   { image: 'https://picsum.photos/id/238/400/300', text: 'Slide 8' },
-  { image: 'https://picsum.photos/id/239/400/300', text: 'Slide 9' },
+  { image: 'https://picsum.photos/id/239/400/300', text: 'Slide 9', href: '/' },
 ];
 ---
 
@@ -34,14 +34,35 @@ const SLIDES = [
   <div data-embla-viewport>
     <div class="container">
       {
-        SLIDES.map((slide) => (
-          <div class="slide">
-            <div class="slide-image-wrapper">
-              <img src={slide.image} alt="" width="400" height="300" />
+        SLIDES.map((slide) =>
+          slide.href ? (
+            <a href={slide.href} target="_blank" class="slide">
+              <div class="slide-image-wrapper">
+                <img
+                  src={slide.image}
+                  alt=""
+                  width="400"
+                  height="300"
+                  class="slide-image"
+                />
+              </div>
+              <p class="slide-text">{slide.text}</p>
+            </a>
+          ) : (
+            <div class="slide">
+              <div class="slide-image-wrapper">
+                <img
+                  src={slide.image}
+                  alt=""
+                  width="400"
+                  height="300"
+                  class="slide-image"
+                />
+              </div>
+              <p class="slide-text">{slide.text}</p>
             </div>
-            <p>{slide.text}</p>
-          </div>
-        ))
+          ),
+        )
       }
     </div>
   </div>
@@ -73,9 +94,30 @@ const SLIDES = [
     border: 1px solid black;
   }
 
+  .slide[href] {
+    transition: opacity 0.2s ease-out;
+  }
+
+  .slide[href]:hover {
+    opacity: 0.6;
+  }
+
   .slide-image-wrapper {
     width: 100%;
     aspect-ratio: 400 / 300;
+    overflow: hidden;
+  }
+
+  .slide[href] .slide-image {
+    transition: transform 0.2s ease-out;
+  }
+
+  .slide[href]:hover .slide-image {
+    transform: scale(1.1);
+  }
+
+  .slide-text {
+    padding: 1rem;
   }
 
   .buttons {
