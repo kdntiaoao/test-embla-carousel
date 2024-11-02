@@ -1,0 +1,77 @@
+.embla {
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid red;
+}
+
+.container {
+  display: flex;
+}
+
+.slide {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 400px;
+  margin-right: 20px;
+  border: 1px solid black;
+}
+
+.slide[href] {
+  transition: opacity 0.2s ease-out;
+}
+
+.slide[href]:hover {
+  opacity: 0.6;
+}
+
+.slideImageWrapper {
+  width: 100%;
+  aspect-ratio: 400 / 300;
+  overflow: hidden;
+}
+
+.slide[href] .slideImage {
+  transition: transform 0.2s ease-out;
+}
+
+.slide[href]:hover .slideImage {
+  transform: scale(1.1);
+}
+
+.slideText {
+  padding: 1rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem;
+}
+
+.button {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: black;
+  border-radius: 0.5rem;
+}
+
+.dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 1rem;
+}
+
+.dot {
+  width: 1.6rem;
+  height: 1.6rem;
+  touch-action: manipulation;
+  border: 2px solid lightgray;
+  border-radius: 50%;
+}
+
+.dot.selected {
+  border: 2px solid black;
+}

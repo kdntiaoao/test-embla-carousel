@@ -5,7 +5,9 @@
     "paths": {
       "@/*": ["./src/*"],
       "/*": ["*"]
-    }
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   },
-  "include": ["**/*.ts", "**/*.astro"]
+  "include": ["**/*.ts", "**/*.tsx", "**/*.astro"]
 }

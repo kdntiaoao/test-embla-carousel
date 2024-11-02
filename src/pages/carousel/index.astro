@@ -1,11 +1,15 @@
 ---
 import CarouselModuleSample from '@/components/carousel/module/CarouselModuleSample.astro';
+import CarouselReactSample from '@/components/carousel/react/CarouselReactSample';
 import Layout from '@/layouts/Layout.astro';
 ---
 
 <Layout title="Welcome to Astro.">
   <div class="container">
     <CarouselModuleSample />
+  </div>
+  <div class="container">
+    <CarouselReactSample client:load />
   </div>
 </Layout>
 
